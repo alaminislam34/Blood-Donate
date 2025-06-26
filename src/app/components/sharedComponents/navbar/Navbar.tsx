@@ -9,7 +9,6 @@ const navItems = [
   { name: "হোম", href: "/" },
   { name: "রক্তদাতারা", href: "/donors" },
   { name: "রক্তের অনুরোধ", href: "/request" },
-  { name: "অনুসন্ধান", href: "/search" },
   { name: "আমাদের সম্পর্কে", href: "/about" },
   { name: "যোগাযোগ", href: "/contact" },
 ];
