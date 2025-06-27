@@ -5,7 +5,7 @@ import { FaFacebook, FaTwitter, FaInstagram, FaEnvelope } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300 px-6 py-10 mt-16">
+    <footer className="bg-gray-900 text-gray-300 px-6 py-10">
       {/* মূল কন্টেইনার: সেন্টার করে মাক্সিমাম প্রস্থ ৭xl, ৩টি কলামে গ্রিড */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* লোগো এবং বর্ণনা */}

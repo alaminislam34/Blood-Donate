@@ -11,6 +11,7 @@ const navItems = [
   { name: "রক্তের অনুরোধ", href: "/request" },
   { name: "আমাদের সম্পর্কে", href: "/about" },
   { name: "যোগাযোগ", href: "/contact" },
+  { name: "সমাজ সহায়তা", href: "/community" },
 ];
 
 export default function Navbar() {
