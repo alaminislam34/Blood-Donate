@@ -23,8 +23,9 @@ interface Props {
 export default function UserProfileView({ profile, onEdit }: Props) {
   return (
     <div className="w-full mx-auto p-6 bg-white rounded-lg shadow">
+      {/* প্রোফাইল ছবি ও নাম */}
       <div className="flex items-center space-x-6 mb-6">
-        <div className="w-24 h-24 rounded-full overflow-hidden bg-gray-200 ">
+        <div className="w-24 h-24 rounded-full overflow-hidden bg-gray-200">
           {profile.image ? (
             <Image
               height={100}
@@ -34,35 +35,36 @@ export default function UserProfileView({ profile, onEdit }: Props) {
               className="w-full h-full object-cover"
             />
           ) : (
-            <div className="flex items-center justify-center w-full h-full text-gray-400 ">
-              No Image
+            <div className="flex items-center justify-center w-full h-full text-gray-400">
+              ছবি নেই
             </div>
           )}
         </div>
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 ">{profile.name}</h1>
-          <p className="text-sm text-gray-500 ">@{profile.username}</p>
+          <h1 className="text-3xl font-bold text-gray-900">{profile.name}</h1>
+          <p className="text-sm text-gray-500">@{profile.username}</p>
         </div>
       </div>
 
-      <div className="space-y-4 text-gray-700 ">
+      {/* প্রোফাইলের বিস্তারিত তথ্য */}
+      <div className="space-y-4 text-gray-700">
         <p>
-          <strong>Email:</strong> {profile.email}
+          <strong>ইমেইল:</strong> {profile.email}
         </p>
         <p>
-          <strong>Phone:</strong> {profile.phone}
+          <strong>মোবাইল:</strong> {profile.phone}
         </p>
         <p>
-          <strong>Blood Group:</strong> {profile.bloodGroup}
+          <strong>রক্তের গ্রুপ:</strong> {profile.bloodGroup}
         </p>
         <p>
-          <strong>Present Address:</strong> {profile.addressPresent}
+          <strong>বর্তমান ঠিকানা:</strong> {profile.addressPresent}
         </p>
         <p>
-          <strong>Permanent Address:</strong> {profile.addressPermanent}
+          <strong>স্থায়ী ঠিকানা:</strong> {profile.addressPermanent}
         </p>
         <p>
-          <strong>Facebook:</strong>{" "}
+          <strong>ফেসবুক প্রোফাইল:</strong>{" "}
           <a
             href={profile.facebook}
             target="_blank"
@@ -73,15 +75,16 @@ export default function UserProfileView({ profile, onEdit }: Props) {
           </a>
         </p>
         <p>
-          <strong>WhatsApp:</strong> {profile.whatsapp}
+          <strong>হোয়াটসঅ্যাপ নম্বর:</strong> {profile.whatsapp}
         </p>
       </div>
 
+      {/* এডিট বাটন */}
       <button
         onClick={onEdit}
         className="mt-8 bg-blue-600 hover:bg-blue-700 text-white rounded px-6 py-2 font-semibold transition"
       >
-        Edit Profile
+        প্রোফাইল এডিট করুন
       </button>
     </div>
   );

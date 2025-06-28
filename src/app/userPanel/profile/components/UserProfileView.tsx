@@ -51,11 +51,11 @@ export default function UserProfileForm({ profile, onSave, onCancel }: Props) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-full mx-auto p-6 bg-white  rounded-lg shadow space-y-6"
+      className="w-full mx-auto p-6 bg-white rounded-lg shadow space-y-6"
     >
-      {/* Profile Image */}
+      {/* প্রোফাইল ছবি */}
       <div className="flex items-center gap-6">
-        <div className="relative w-24 h-24 rounded-full overflow-hidden bg-gray-200 ">
+        <div className="relative w-24 h-24 rounded-full overflow-hidden bg-gray-200">
           {previewImage ? (
             <Image
               height={100}
@@ -65,14 +65,14 @@ export default function UserProfileForm({ profile, onSave, onCancel }: Props) {
               className="w-full h-full object-cover"
             />
           ) : (
-            <div className="flex items-center justify-center w-full h-full text-gray-400 ">
-              No Image
+            <div className="flex items-center justify-center w-full h-full text-gray-400">
+              ছবি নেই
             </div>
           )}
         </div>
         <div>
           <label className="cursor-pointer text-blue-600 hover:underline">
-            Upload New Photo
+            নতুন ছবি আপলোড করুন
             <input
               type="file"
               accept="image/*"
@@ -86,13 +86,13 @@ export default function UserProfileForm({ profile, onSave, onCancel }: Props) {
         </div>
       </div>
 
-      {/* Name */}
+      {/* পুরো নাম */}
       <div>
         <label
           htmlFor="name"
-          className="block mb-1 font-semibold text-gray-700 "
+          className="block mb-1 font-semibold text-gray-700"
         >
-          Full Name
+          পূর্ণ নাম
         </label>
         <input
           type="text"
@@ -100,18 +100,18 @@ export default function UserProfileForm({ profile, onSave, onCancel }: Props) {
           name="name"
           value={formData.name}
           onChange={handleChange}
-          className="w-full rounded border border-gray-300 p-2  dark:text-white"
+          className="w-full rounded border border-gray-300 p-2"
           required
         />
       </div>
 
-      {/* Username (readonly) */}
+      {/* ইউজারনেম (শুধু পড়ার জন্য) */}
       <div>
         <label
           htmlFor="username"
-          className="block mb-1 font-semibold text-gray-700 "
+          className="block mb-1 font-semibold text-gray-700"
         >
-          Username
+          ইউজারনেম
         </label>
         <input
           type="text"
@@ -119,17 +119,17 @@ export default function UserProfileForm({ profile, onSave, onCancel }: Props) {
           name="username"
           value={formData.username}
           readOnly
-          className="w-full rounded border border-gray-300 p-2 bg-gray-100 cursor-not-allowed  dark:text-gray-400"
+          className="w-full rounded border border-gray-300 p-2 bg-gray-100 cursor-not-allowed text-gray-500"
         />
       </div>
 
-      {/* Email (readonly) */}
+      {/* ইমেইল (শুধু পড়ার জন্য) */}
       <div>
         <label
           htmlFor="email"
-          className="block mb-1 font-semibold text-gray-700 "
+          className="block mb-1 font-semibold text-gray-700"
         >
-          Email
+          ইমেইল
         </label>
         <input
           type="email"
@@ -137,17 +137,17 @@ export default function UserProfileForm({ profile, onSave, onCancel }: Props) {
           name="email"
           value={formData.email}
           readOnly
-          className="w-full rounded border border-gray-300 p-2 bg-gray-100 cursor-not-allowed  dark:text-gray-400"
+          className="w-full rounded border border-gray-300 p-2 bg-gray-100 cursor-not-allowed text-gray-500"
         />
       </div>
 
-      {/* Phone */}
+      {/* ফোন নম্বর */}
       <div>
         <label
           htmlFor="phone"
-          className="block mb-1 font-semibold text-gray-700 "
+          className="block mb-1 font-semibold text-gray-700"
         >
-          Phone Number
+          মোবাইল নম্বর
         </label>
         <input
           type="tel"
@@ -155,17 +155,17 @@ export default function UserProfileForm({ profile, onSave, onCancel }: Props) {
           name="phone"
           value={formData.phone}
           onChange={handleChange}
-          className="w-full rounded border border-gray-300 p-2  dark:text-white"
+          className="w-full rounded border border-gray-300 p-2"
         />
       </div>
 
-      {/* Blood Group */}
+      {/* ব্লাড গ্রুপ */}
       <div>
         <label
           htmlFor="bloodGroup"
-          className="block mb-1 font-semibold text-gray-700 "
+          className="block mb-1 font-semibold text-gray-700"
         >
-          Blood Group
+          ব্লাড গ্রুপ
         </label>
         <input
           type="text"
@@ -173,17 +173,17 @@ export default function UserProfileForm({ profile, onSave, onCancel }: Props) {
           name="bloodGroup"
           value={formData.bloodGroup}
           onChange={handleChange}
-          className="w-full rounded border border-gray-300 p-2  dark:text-white"
+          className="w-full rounded border border-gray-300 p-2"
         />
       </div>
 
-      {/* Present Address */}
+      {/* বর্তমান ঠিকানা */}
       <div>
         <label
           htmlFor="addressPresent"
-          className="block mb-1 font-semibold text-gray-700 "
+          className="block mb-1 font-semibold text-gray-700"
         >
-          Present Address
+          বর্তমান ঠিকানা
         </label>
         <textarea
           id="addressPresent"
@@ -191,17 +191,17 @@ export default function UserProfileForm({ profile, onSave, onCancel }: Props) {
           value={formData.addressPresent}
           onChange={handleChange}
           rows={2}
-          className="w-full rounded border border-gray-300 p-2  dark:text-white"
+          className="w-full rounded border border-gray-300 p-2"
         />
       </div>
 
-      {/* Permanent Address */}
+      {/* স্থায়ী ঠিকানা */}
       <div>
         <label
           htmlFor="addressPermanent"
-          className="block mb-1 font-semibold text-gray-700 "
+          className="block mb-1 font-semibold text-gray-700"
         >
-          Permanent Address
+          স্থায়ী ঠিকানা
         </label>
         <textarea
           id="addressPermanent"
@@ -209,17 +209,17 @@ export default function UserProfileForm({ profile, onSave, onCancel }: Props) {
           value={formData.addressPermanent}
           onChange={handleChange}
           rows={2}
-          className="w-full rounded border border-gray-300 p-2  dark:text-white"
+          className="w-full rounded border border-gray-300 p-2"
         />
       </div>
 
-      {/* Facebook */}
+      {/* ফেসবুক লিংক */}
       <div>
         <label
           htmlFor="facebook"
-          className="block mb-1 font-semibold text-gray-700 "
+          className="block mb-1 font-semibold text-gray-700"
         >
-          Facebook Profile URL
+          ফেসবুক প্রোফাইল লিংক
         </label>
         <input
           type="url"
@@ -228,17 +228,17 @@ export default function UserProfileForm({ profile, onSave, onCancel }: Props) {
           value={formData.facebook}
           onChange={handleChange}
           placeholder="https://facebook.com/yourprofile"
-          className="w-full rounded border border-gray-300 p-2  dark:text-white"
+          className="w-full rounded border border-gray-300 p-2"
         />
       </div>
 
-      {/* WhatsApp */}
+      {/* হোয়াটসঅ্যাপ */}
       <div>
         <label
           htmlFor="whatsapp"
-          className="block mb-1 font-semibold text-gray-700 "
+          className="block mb-1 font-semibold text-gray-700"
         >
-          WhatsApp Number
+          হোয়াটসঅ্যাপ নম্বর
         </label>
         <input
           type="tel"
@@ -247,24 +247,24 @@ export default function UserProfileForm({ profile, onSave, onCancel }: Props) {
           value={formData.whatsapp}
           onChange={handleChange}
           placeholder="+8801XXXXXXXXX"
-          className="w-full rounded border border-gray-300 p-2  dark:text-white"
+          className="w-full rounded border border-gray-300 p-2"
         />
       </div>
 
-      {/* Buttons */}
+      {/* বাটনসমূহ */}
       <div className="flex space-x-4">
         <button
           type="submit"
           className="bg-blue-600 hover:bg-blue-700 text-white rounded px-6 py-2 font-semibold transition flex-1"
         >
-          Save Changes
+          পরিবর্তন সংরক্ষণ করুন
         </button>
         <button
           type="button"
           onClick={onCancel}
           className="bg-gray-400 hover:bg-gray-500 text-white rounded px-6 py-2 font-semibold transition flex-1"
         >
-          Cancel
+          বাতিল করুন
         </button>
       </div>
     </form>
