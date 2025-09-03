@@ -50,7 +50,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <section className="max-w-md mx-auto mt-20 p-6 bg-white rounded-lg shadow-lg">
+    <section className="max-w-xl mx-auto my-16 p-6 bg-white rounded-lg shadow-lg">
       <h1 className="text-3xl font-bold mb-6 text-center text-red-700">
         নিবন্ধন করুন
       </h1>
