@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import { FaRegComments, FaTint, FaUser } from "react-icons/fa";
+import { FaRegComments, FaTint, FaUser } from "react-icons/fa"
 import {
   LineChart,
   Line,
@@ -9,20 +9,21 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-} from "recharts";
+} from "recharts"
 
+// ডামি চার্ট ডাটা
 const data = [
   { month: "Jan", donations: 1 },
   { month: "Feb", donations: 2 },
   { month: "Mar", donations: 3 },
   { month: "Apr", donations: 2 },
   { month: "May", donations: 4 },
-];
+]
 
 export default function UserDashboardOverview() {
   return (
     <div className="space-y-6">
-      {/* স্বাগতম মেসেজ */}
+      {/* 👋 স্বাগতম */}
       <div className="text-gray-800">
         <h1 className="text-3xl font-bold">👋 স্বাগতম, আল-আমিন!</h1>
         <p className="text-sm text-gray-500 mt-1">
@@ -30,8 +31,9 @@ export default function UserDashboardOverview() {
         </p>
       </div>
 
-      {/* পরিসংখ্যান */}
+      {/* 📊 পরিসংখ্যান Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {/* পোস্ট সংখ্যা */}
         <div className="bg-white p-6 rounded-xl shadow flex items-center gap-4">
           <div className="p-3 bg-blue-100 text-blue-600 rounded-full">
             <FaUser size={24} />
@@ -42,6 +44,7 @@ export default function UserDashboardOverview() {
           </div>
         </div>
 
+        {/* মন্তব্য */}
         <div className="bg-white p-6 rounded-xl shadow flex items-center gap-4">
           <div className="p-3 bg-green-100 text-green-600 rounded-full">
             <FaRegComments size={24} />
@@ -52,6 +55,7 @@ export default function UserDashboardOverview() {
           </div>
         </div>
 
+        {/* রক্তদান */}
         <div className="bg-white p-6 rounded-xl shadow flex items-center gap-4">
           <div className="p-3 bg-red-100 text-red-600 rounded-full">
             <FaTint size={24} />
@@ -63,8 +67,11 @@ export default function UserDashboardOverview() {
         </div>
       </div>
 
-      {/* রক্তদানের চার্ট */}
-      <section>
+      {/* 🩸 রক্তদানের চার্ট */}
+      <section className="bg-white p-6 rounded-xl shadow">
+        <h3 className="text-lg font-semibold mb-4 text-gray-800">
+          📈 রক্তদানের পরিসংখ্যান
+        </h3>
         <ResponsiveContainer width="100%" height={300}>
           <LineChart data={data}>
             <CartesianGrid strokeDasharray="3 3" />
@@ -74,14 +81,14 @@ export default function UserDashboardOverview() {
             <Line
               type="monotone"
               dataKey="donations"
-              stroke="#8884d8"
+              stroke="#2563eb" // Tailwind blue-600
               strokeWidth={2}
             />
           </LineChart>
         </ResponsiveContainer>
       </section>
 
-      {/* সাম্প্রতিক কার্যক্রম */}
+      {/* 📋 সাম্প্রতিক কার্যক্রম */}
       <div className="bg-white p-6 rounded-xl shadow">
         <h3 className="text-lg font-semibold mb-4 text-gray-800">
           📋 সাম্প্রতিক কার্যক্রম
@@ -93,5 +100,5 @@ export default function UserDashboardOverview() {
         </ul>
       </div>
     </div>
-  );
+  )
 }

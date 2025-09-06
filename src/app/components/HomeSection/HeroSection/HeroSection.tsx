@@ -5,7 +5,10 @@
 import { useState } from "react";
 import Slider from "react-slick";
 import Image from "next/image";
-import { motion } from "motion/react";
+import { motion, Variants } from "framer-motion"; // CHANGE 1: Import the 'Variants' type
+import { ArrowRight } from "lucide-react";
+
+// Import slick-carousel styles
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -20,68 +23,105 @@ export default function HeroSection() {
     slidesToScroll: 1,
     arrows: true,
     autoplay: true,
-    autoplaySpeed: 8000,
+    autoplaySpeed: 7000,
     fade: true,
-    cssEase: "linear",
+    cssEase: "cubic-bezier(0.7, 0, 0.3, 1)",
     beforeChange: (_: number, next: number) => setCurrentSlide(next),
   };
 
   const slides = [
     {
-      title: "রক্ত দিন, জীবন বাঁচান",
-      description: "আজই একজন রক্তদাতা হয়ে জীবন রক্ষার মিশনে যোগ দিন।",
+      title: "Donate Blood, Save Lives",
+      description: "Join the life-saving mission by becoming a blood donor today.",
       image: "/images/slider1.jpg",
     },
     {
-      title: "আপনার কাছাকাছি রক্তদাতা খুঁজুন",
-      description: "অবিলম্বে আপনার এলাকায় উপলব্ধ রক্তদাতাদের খুঁজে পান সহজেই।",
+      title: "Find Blood Donors Near You",
+      description: "Instantly find available blood donors in your area with ease.",
       image: "/images/slider2.jpg",
     },
     {
-      title: "আপনিও হতে পারেন একজন বীর",
-      description:
-        "আপনার রক্তই হতে পারে কারো বাঁচার শেষ ভরসা। আজই রেজিস্টার করুন।",
+      title: "You Can Be a Hero",
+      description: "Your blood could be someone's last hope. Register today.",
       image: "/images/slider3.jpg",
     },
   ];
 
+  // Animation variants for the text container
+  // CHANGE 2: Explicitly apply the 'Variants' type
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3,
+      },
+    },
+  };
+
+  // Animation variants for each text item (h1, p)
+  // CHANGE 2: Explicitly apply the 'Variants' type
+  const itemVariants: Variants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
-    <section className="relative w-full h-[80vh] overflow-hidden">
+    <section className="relative w-full h-[90vh] lg:h-[85vh] overflow-hidden">
       {/* Background Image Slider */}
-      <Slider {...settings}>
+      <Slider {...settings} className="h-full">
         {slides.map((slide, index) => (
-          <div key={index} className="relative h-[80vh] w-full">
+          <div key={index} className="relative h-[90vh] lg:h-[85vh] w-full">
             <Image
               src={slide.image}
               alt={slide.title}
               fill
-              className="object-cover brightness-75"
-              priority
+              className="object-cover"
+              priority={index === 0}
             />
           </div>
         ))}
       </Slider>
 
-      {/* Static Overlay Content */}
-      <div className="absolute inset-0 bg-black/40 flex items-center justify-center text-center px-4 ">
+      {/* Modern Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
+
+      {/* Animated Text Content */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4">
         <motion.div
           key={currentSlide}
-          className="max-w-2xl text-white"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          className="max-w-3xl flex flex-col items-center gap-y-6"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
         >
-          <h1 className="text-3xl md:text-5xl font-bold mb-4">
+          <motion.h1
+            className="text-4xl md:text-6xl font-extrabold tracking-tight"
+            style={{ textShadow: "0px 2px 4px rgba(0, 0, 0, 0.5)" }}
+            variants={itemVariants}
+          >
             {slides[currentSlide].title}
-          </h1>
-          <p className="text-lg md:text-xl">
+          </motion.h1>
+          <motion.p
+            className="text-lg md:text-xl max-w-xl"
+            style={{ textShadow: "0px 2px 4px rgba(0, 0, 0, 0.5)" }}
+            variants={itemVariants}
+          >
             {slides[currentSlide].description}
-          </p>
-          <div className="mt-6 pointer-events-auto">
-            <button className="px-6 py-3 text-white bg-red-600 font-semibold rounded shadow hover:bg-red-700 transition cursor-pointer">
-              শুরু করুন
+          </motion.p>
+          <motion.div variants={itemVariants}>
+            <button className="group mt-4 px-8 py-3 bg-gradient-to-r from-red-600 to-red-500 font-semibold rounded-full shadow-lg hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-red-300 transition-all duration-300 ease-in-out flex items-center gap-x-2">
+              Get Started
+              <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
             </button>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
