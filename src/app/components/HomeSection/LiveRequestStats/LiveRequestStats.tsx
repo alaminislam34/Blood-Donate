@@ -1,98 +1,114 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 
 export default function LiveRequestsStats() {
-  // সিম্পল স্ট্যাটিক ডাটা, তুমি চাইলে API থেকেও নিয়ে আসতে পারো
+  // Static data for demonstration. This can be fetched from an API.
   const stats = [
-    { label: "মোট রক্তদাতা", value: 1250 },
-    { label: "সফল রক্তদান", value: 870 },
-    { label: "অ্যাকটিভ রক্ত অনুরোধ", value: 45 },
-    { label: "রক্তদাতা রেজিস্ট্রেশন", value: 230 },
+    { label: "Total Donors", value: 1250 },
+    { label: "Successful Donations", value: 870 },
+    { label: "Active Blood Requests", value: 45 },
+    { label: "Donor Registrations", value: 230 },
   ];
 
-  // লাইভ রিকোয়েস্টের জন্য ডামি লিস্ট
+  // Dummy data for live requests.
   const liveRequests = [
-    { name: "মোঃ হাসান", bloodGroup: "A+", location: "ঢাকা", urgency: "উচ্চ" },
+    { name: "John Doe", bloodGroup: "A+", location: "New York", urgency: "High" },
     {
-      name: "ফাতেমা খাতুন",
+      name: "Jane Smith",
       bloodGroup: "B-",
-      location: "চট্টগ্রাম",
-      urgency: "মধ্যম",
+      location: "London",
+      urgency: "Medium",
     },
     {
-      name: "রাহুল সিকদার",
+      name: "Sam Wilson",
       bloodGroup: "O+",
-      location: "রাজশাহী",
-      urgency: "উচ্চ",
+      location: "Chicago",
+      urgency: "High",
     },
   ];
+
+  const statVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7 } },
+  };
+
+  const requestListVariants = {
+    hidden: { opacity: 0, scaleY: 0.9 },
+    visible: { opacity: 1, scaleY: 1, transition: { duration: 0.8, ease: "easeOut" } },
+  };
 
   return (
-    <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4">
+    <section className="py-20 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-6">
         <motion.h2
-          className="text-3xl md:text-4xl font-bold text-red-700 mb-8 text-center"
-          initial={{ opacity: 0, y: -30 }}
+          className="text-4xl md:text-5xl font-extrabold text-center text-red-700 mb-12"
+          initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
         >
-          লাইভ রক্ত অনুরোধ ও পরিসংখ্যান
+          Live Blood Requests & Statistics
         </motion.h2>
 
-        {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12 text-center">
+        {/* Stats Section */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16 text-center">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
-              className="bg-red-50 p-6 rounded-lg shadow-md"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 * index, duration: 0.7 }}
+              className="bg-red-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+              variants={statVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ delay: 0.2 * index }}
             >
-              <p className="text-4xl font-extrabold text-red-600">
+              <p className="text-5xl font-extrabold text-red-600">
                 {stat.value}
               </p>
-              <p className="mt-2 text-lg font-medium text-gray-700">
+              <p className="mt-3 text-lg font-medium text-gray-700">
                 {stat.label}
               </p>
             </motion.div>
           ))}
         </div>
 
-        {/* Live Requests */}
+        {/* Live Requests Section */}
         <motion.div
-          className="max-w-4xl mx-auto bg-red-50 rounded-lg shadow-lg p-6"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.7 }}
+          className="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl p-8"
+          variants={requestListVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
         >
-          <h3 className="text-2xl font-semibold text-red-700 mb-4 text-center">
-            লাইভ রক্ত অনুরোধ
+          <h3 className="text-2xl font-bold text-red-700 mb-6 text-center">
+            Live Blood Requests
           </h3>
           <ul className="space-y-4">
             {liveRequests.map((req, i) => (
               <li
                 key={i}
-                className="flex justify-between items-center bg-white p-4 rounded-lg shadow hover:shadow-lg transition"
+                className="flex items-center justify-between p-5 rounded-xl border border-gray-200 transition-all duration-300 hover:bg-gray-100"
               >
                 <div>
                   <p className="font-semibold text-gray-900">{req.name}</p>
-                  <p className="text-sm text-gray-600">
-                    {req.location} -{" "}
-                    <span className="font-bold">{req.bloodGroup}</span>
+                  <p className="text-sm text-gray-600 mt-1">
+                    {req.location} |{" "}
+                    <span className="font-bold text-red-600">
+                      {req.bloodGroup}
+                    </span>
                   </p>
                 </div>
                 <span
-                  className={`px-3 py-1 rounded-full text-sm font-semibold ${
-                    req.urgency === "উচ্চ"
-                      ? "bg-red-600 text-white"
-                      : req.urgency === "মধ্যম"
-                      ? "bg-yellow-400 text-gray-900"
-                      : "bg-gray-300 text-gray-700"
+                  className={`px-4 py-1.5 rounded-full text-sm font-semibold text-white ${
+                    req.urgency === "High"
+                      ? "bg-red-600"
+                      : req.urgency === "Medium"
+                      ? "bg-yellow-500"
+                      : "bg-gray-400"
                   }`}
                 >
-                  {req.urgency} জরুরি
+                  {req.urgency} Urgency
                 </span>
               </li>
             ))}

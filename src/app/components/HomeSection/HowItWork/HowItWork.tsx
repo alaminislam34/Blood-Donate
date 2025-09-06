@@ -1,28 +1,28 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function HowItWorksSection() {
   const steps = [
     {
-      title: "রেজিস্ট্রেশন করুন",
-      description: "আমাদের প্ল্যাটফর্মে সহজেই একাউন্ট তৈরি করুন কয়েকটি ধাপে।",
+      title: "Register",
+      description: "Easily create an account on our platform in just a few steps.",
       icon: "/icons/register.png",
     },
     {
-      title: "প্রোফাইল তৈরি করুন",
-      description: "আপনার রক্তের গ্রুপ, লোকেশন ও অন্যান্য তথ্য যুক্ত করুন।",
+      title: "Create a Profile",
+      description: "Add your blood type, location, and other relevant information.",
       icon: "/icons/profile.png",
     },
     {
-      title: "রক্ত খুঁজুন বা অনুরোধ দিন",
-      description: "প্রয়োজনে রক্ত খুঁজুন বা অন্যদের কাছে রক্তের অনুরোধ পাঠান।",
+      title: "Find or Request Blood",
+      description: "Search for blood when you need it or send a blood request to others.",
       icon: "/icons/search.png",
     },
     {
-      title: "যোগাযোগ করুন ও জীবন বাঁচান",
-      description: "রক্তদাতার সাথে যোগাযোগ করুন এবং সহযোগিতার হাত বাড়ান।",
+      title: "Connect and Save a Life",
+      description: "Connect with a blood donor and extend a helping hand.",
       icon: "/icons/connect.png",
     },
   ];
@@ -36,7 +36,7 @@ export default function HowItWorksSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          কিভাবে কাজ করে?
+          How It Works
         </motion.h2>
         <motion.p
           className="text-gray-600 max-w-2xl mx-auto mb-12"
@@ -44,8 +44,7 @@ export default function HowItWorksSection() {
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.6 }}
         >
-          মাত্র কয়েকটি ধাপে আপনি আমাদের প্ল্যাটফর্ম ব্যবহার করে রক্ত দিতে বা
-          নিতে পারবেন।
+          You can use our platform to donate or receive blood in just a few simple steps.
         </motion.p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
